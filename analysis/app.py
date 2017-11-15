@@ -18,7 +18,7 @@ def analyze(filepath, titleSlugTestCase, accessToken):
     linenos = get_lines_of_code(filepath)
     executiontime = get_execution_time(filepath)
 
-    url = "http://localhost:8080/v2/dumps/analysis"
+    url = "https://api2.commit.live/v2/dumps/analysis"
     headers = {
         "Content-Type": "application/json",
         "Authorization":  accessToken

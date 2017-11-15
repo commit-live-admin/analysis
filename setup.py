@@ -1,7 +1,7 @@
 """A setuptools based setup module.
 See:
 https://packaging.python.org/en/latest/distributing.html
-https://github.com/commit-live-admin/errors
+https://github.com/commit-live-admin/analysis
 """
 
 # Always prefer setuptools over distutils
@@ -17,13 +17,12 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='GreyAtom-Analysis',
+    name='analysis',
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
     version='1.0.3',
-
     description='Analyze students project for greyatom students',
     long_description=long_description,
 
@@ -107,7 +106,7 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     entry_points={
         'console_scripts': [
-            'errors=errors:main',
+            'analysis=analysis:main',
         ],
     },
 )
