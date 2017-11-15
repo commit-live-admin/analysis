@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 
-from run.validate_pep8 import validate
-from run.line_of_code import get_lines_of_code
-from run.time_to_solve import get_execution_time
+from analysis.validate_pep8 import validate
+from analysis.line_of_code import get_lines_of_code
+from analysis.time_to_solve import get_execution_time
 import requests
 import sys
 
-# file_path = "/Users/sangam/Documents/greyatom/analysis/run/module.py"
+# file_path = "/Users/sangam/Documents/greyatom/analysis/analysis/module.py"
 #
 # print(validate(file_path))
 # print(get_lines_of_code(file_path))
@@ -35,7 +35,7 @@ def analyze(filepath, titleSlugTestCase, accessToken):
 
 
 if __name__ == "__main__":
-    filePath = sys.argv[1] # /Users/sangam/Documents/greyatom/analysis/run/module.py
+    filePath = sys.argv[1] # /Users/sangam/Documents/greyatom/analysis/analysis/module.py
     titleSlugTestCase = sys.argv[2] # fsdse-title-slug
     accessToken = sys.argv[3] # 60f126597ce4dccd7e716ed4ecf79c7b52a1d4c5
     analyze(filePath, titleSlugTestCase, accessToken)
