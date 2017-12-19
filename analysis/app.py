@@ -5,20 +5,21 @@ from analysis.line_of_code import get_lines_of_code
 from analysis.time_to_solve import get_execution_time
 import requests
 import sys
-
-# file_path = "/Users/sangam/Documents/greyatom/analysis/analysis/module.py"
-#
-# print(validate(file_path))
-# print(get_lines_of_code(file_path))
-# print(get_execution_time(file_path))
+import json
 
 
-def analyze(filepath, titleSlugTestCase, accessToken):
+def analyze(filepath, titleSlugTestCase, accessToken, env, hash):
     pep8_warnings = validate(filepath)
     linenos = get_lines_of_code(filepath)
     executiontime = get_execution_time(filepath)
 
-    url = "https://api2.commit.live/v2/dumps/analysis"
+    domain = "https://api2.commit.live"
+    if(env == "dev"):
+        domain = "http://api.greyatom.com"
+    elif (env == "local"):
+        domain = "http://localhost:8080"
+
+    url = domain + "/v2/dumps/analysis"
     headers = {
         "Content-Type": "application/json",
         "Authorization":  accessToken
@@ -28,15 +29,24 @@ def analyze(filepath, titleSlugTestCase, accessToken):
         'warninggs': pep8_warnings,
         'lines': linenos,
         'executionTime': executiontime,
-        'titleSlugTestCase': titleSlugTestCase
+        'titleSlugTestCase': titleSlugTestCase,
+        'hash': hash
     }
 
-    response = requests.post(url, json=params, headers=headers)
+    print json.dumps(params)
+    # response = requests.post(url, json=params, headers=headers)
 
 
 if __name__ == "__main__":
-    filePath = sys.argv[1] # /Users/sangam/Documents/greyatom/analysis/analysis/module.py
-    titleSlugTestCase = sys.argv[2] # fsdse-title-slug
-    accessToken = sys.argv[3] # 60f126597ce4dccd7e716ed4ecf79c7b52a1d4c5
-    analyze(filePath, titleSlugTestCase, accessToken)
+    # env = "prod"
+    # accessToken = "60f126597ce4dccd7e716ed4ecf79c7b52a1d4c5"
+    # hash = "hash"
+    # titleSlugTestCase = "fsdse-title-slug"
+    # filePath =  "/Users/sangam/Documents/greyatom/analysis/analysis/module.py"
 
+    env = sys.argv[1]
+    accessToken = sys.argv[2]
+    hash = sys.argv[3]
+    titleSlugTestCase = sys.argv[4]
+    filePath = sys.argv[5]
+    analyze(filePath, titleSlugTestCase, accessToken, env, hash)
