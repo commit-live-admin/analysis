@@ -32,6 +32,7 @@ def analyze(filepath, titleSlugTestCase, accessToken, env, dumpId):
         'titleSlugTestCase': titleSlugTestCase
     }
 
-    requests.post(url, json=params, headers=headers)
+    response = requests.post(url, json=params, headers=headers)
+    print response
 
 
