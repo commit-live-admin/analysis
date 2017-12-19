@@ -22,7 +22,7 @@ setup(
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
-    version='1.0.6',
+    version='1.0.7',
     description='Analyze students project for greyatom students',
     long_description=long_description,
 
@@ -106,7 +106,7 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     entry_points={
         'console_scripts': [
-            'analysis=analysis:main',
+            'analysis=analysis:app',
         ],
     },
 )
