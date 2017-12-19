@@ -36,7 +36,7 @@ def analyze(filepath, titleSlugTestCase, accessToken, env, hash):
     print json.dumps(params)
     # response = requests.post(url, json=params, headers=headers)
 
-if __name__ == "__main__":
+def main():
     # env = "prod"
     # accessToken = "60f126597ce4dccd7e716ed4ecf79c7b52a1d4c5"
     # hash = "hash"
