@@ -10,7 +10,10 @@ import json
 def analyze(filepath, titleSlugTestCase, accessToken, env, dumpId):
     pep8_warnings = validate(filepath)
     linenos = get_lines_of_code(filepath)
-    executiontime = get_execution_time(filepath)
+    try:
+        executiontime = get_execution_time(filepath)
+    except:
+        executiontime = 0
 
     domain = "https://api2.commit.live"
     if(env == "dev"):
