@@ -17,7 +17,7 @@ def analyze(filepath, titleSlugTestCase, accessToken, env, dumpId):
 
     domain = "https://api2.commit.live"
     if(env == "dev"):
-        domain = "http://api.greyatom.com"
+        domain = "http://develop.api.greyatom.com"
     elif (env == "local"):
         domain = "http://localhost:8080"
 
